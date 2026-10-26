@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Примеры вакансий для AI-проектов</title>
+
+<style>
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .ai-vacancy-widget {
+
+    --navy: #0a164d;
+    --text: #243858;
+
+    --blue-light: #d8eafa;
+    --blue: #1967c9;
+
+    --purple-light: #eadbfa;
+    --purple: #8134d2;
+
+    --violet-light: #dfcff5;
+    --violet: #6626bd;
+
+    --orange-light: #fae4bd;
+    --orange: #d96f00;
+
+    width: 757px;
+    height: 340px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: #ffffff;
+    color: var(--navy);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    box-sizing: border-box;
+  }
+
+  .ai-vacancy-widget * {
+    box-sizing: border-box;
+  }
+
+
+  /* =========================
+     ШАПКА
+     ========================= */
+
+  .vacancy-header {
+    height: 67px;
+    padding: 9px 14px 7px;
+  }
+
+  .vacancy-title {
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 25px;
+    line-height: 1.05;
+    font-weight: 800;
+  }
+
+  .vacancy-subtitle {
+    margin-top: 5px;
+
+    color: #356f9d;
+
+    font-size: 12.5px;
+    line-height: 1.15;
+  }
+
+
+  /* =========================
+     ОСНОВНАЯ ОБЛАСТЬ
+     ========================= */
+
+  .vacancy-body {
+
+    display: grid;
+
+    grid-template-columns: 205px 1fr;
+
+    gap: 8px;
+
+    height: 273px;
+
+    padding: 0 8px 8px;
+  }
+
+
+  /* =========================
+     ВКЛАДКИ
+     ========================= */
+
+  .vacancy-tabs {
+
+    display: grid;
+
+    grid-template-rows: repeat(4, 1fr);
+
+    gap: 5px;
+
+    min-height: 0;
+  }
+
+  .vacancy-tab {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 8px 10px;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+      transform .15s ease,
+      border-color .15s ease,
+      box-shadow .15s ease;
+  }
+
+  .vacancy-tab:hover {
+    transform: translateX(2px);
+  }
+
+  .vacancy-tab.active {
+
+    border-color: currentColor;
+
+    box-shadow: 0 3px 10px rgba(17, 35, 81, .13);
+  }
+
+  .vacancy-tab.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -8px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 8px solid currentColor;
+  }
+
+  .vacancy-tab-name {
+
+    display: block;
+
+    font-size: 13px;
+    line-height: 1.15;
+    font-weight: 800;
+  }
+
+  .vacancy-tab-description {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #40536d;
+
+    font-size: 10.5px;
+    line-height: 1.15;
+    font-weight: 400;
+  }
+
+
+  /* =========================
+     ЦВЕТА ВКЛАДОК
+     ========================= */
+
+  .vacancy-tab-1 {
+    background: var(--blue-light);
+    color: var(--blue);
+  }
+
+  .vacancy-tab-2 {
+    background: var(--purple-light);
+    color: var(--purple);
+  }
+
+  .vacancy-tab-3 {
+    background: var(--violet-light);
+    color: var(--violet);
+  }
+
+  .vacancy-tab-4 {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+
+
+  /* =========================
+     ПРАВАЯ ПАНЕЛЬ
+     ========================= */
+
+  .vacancy-panel {
+
+    display: none;
+
+    height: 100%;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+  }
+
+  .vacancy-panel.active {
+
+    display: flex;
+
+    flex-direction: column;
+  }
+
+  .vacancy-panel-1 {
+    background: var(--blue-light);
+  }
+
+  .vacancy-panel-2 {
+    background: var(--purple-light);
+  }
+
+  .vacancy-panel-3 {
+    background: var(--violet-light);
+  }
+
+  .vacancy-panel-4 {
+    background: var(--orange-light);
+  }
+
+
+  /* =========================
+     ВЕРХ ПАНЕЛИ
+     ========================= */
+
+  .vacancy-panel-header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 51px;
+
+    padding: 8px 11px;
+
+    border-bottom: 1px solid rgba(255,255,255,.85);
+  }
+
+  .vacancy-panel-heading {
+    min-width: 0;
+  }
+
+  .vacancy-panel-title {
+
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 18px;
+    line-height: 1.08;
+    font-weight: 800;
+  }
+
+
+  /* =========================
+     КНОПКА КОПИРОВАНИЯ
+     ========================= */
+
+  .copy-vacancy {
+
+    flex: 0 0 auto;
+
+    min-width: 126px;
+    height: 29px;
+
+    padding: 0 11px;
+
+    border: 1px solid #295a77;
+    border-radius: 5px;
+
+    background: #295a77;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 10.5px;
+    line-height: 1;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+      background .15s ease,
+      transform .15s ease;
+  }
+
+  .copy-vacancy:hover {
+
+    background: #214c67;
+
+    transform: translateY(-1px);
+  }
+
+  .copy-vacancy.copied {
+
+    background: #23835c;
+    border-color: #23835c;
+  }
+
+
+  /* =========================
+     ТЕКСТ ВАКАНСИИ
+     ========================= */
+
+  .vacancy-content {
+
+    display: grid;
+
+    grid-template-rows: 1fr 1fr;
+
+    gap: 5px;
+
+    flex: 1;
+
+    min-height: 0;
+
+    padding: 6px;
+  }
+
+  .vacancy-section {
+
+    padding: 8px 10px;
+
+    background: rgba(255,255,255,.48);
+
+    border: 1px solid rgba(255,255,255,.82);
+
+    border-radius: 6px;
+
+    overflow: hidden;
+  }
+
+  .vacancy-section-title {
+
+    margin: 0 0 5px;
+
+    font-size: 10.5px;
+    line-height: 1;
+    font-weight: 800;
+
+    text-transform: uppercase;
+  }
+
+  .vacancy-section p {
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 11.8px;
+    line-height: 1.3;
+  }
+
+
+  /* =========================
+     ЦВЕТА ЗАГОЛОВКОВ
+     ========================= */
+
+  .vacancy-panel-1 .vacancy-section-title {
+    color: var(--blue);
+  }
+
+  .vacancy-panel-2 .vacancy-section-title {
+    color: var(--purple);
+  }
+
+  .vacancy-panel-3 .vacancy-section-title {
+    color: var(--violet);
+  }
+
+  .vacancy-panel-4 .vacancy-section-title {
+    color: var(--orange);
+  }
+
+
+  /* =========================
+     ФОКУС
+     ========================= */
+
+  .vacancy-tab:focus-visible,
+  .copy-vacancy:focus-visible {
+
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+  }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="ai-vacancy-widget" id="aiVacancyWidget">
+
+
+  <!-- ШАПКА -->
+
+  <div class="vacancy-header">
+
+    <h2 class="vacancy-title">
+      Примеры вакансий для AI-проектов
+    </h2>
+
+    <div class="vacancy-subtitle">
+      Выберите специалиста и скопируйте готовое описание вакансии
+    </div>
+
+  </div>
+
+
+  <div class="vacancy-body">
+
+
+    <!-- =========================
+         ВКЛАДКИ
+         ========================= -->
+
+    <div class="vacancy-tabs" role="tablist">
+
+
+      <button
+        class="vacancy-tab vacancy-tab-1 active"
+        data-vacancy="vacancy1"
+        role="tab"
+        aria-selected="true">
+
+        <span class="vacancy-tab-name">
+          AI/LLM Engineer
+        </span>
+
+        <span class="vacancy-tab-description">
+          Ассистенты и ИИ-агенты
+        </span>
+
+      </button>
+
+
+      <button
+        class="vacancy-tab vacancy-tab-2"
+        data-vacancy="vacancy2"
+        role="tab"
+        aria-selected="false">
+
+        <span class="vacancy-tab-name">
+          Data Scientist LLM/NLP
+        </span>
+
+        <span class="vacancy-tab-description">
+          Дообучение LLM
+        </span>
+
+      </button>
+
+
+      <button
+        class="vacancy-tab vacancy-tab-3"
+        data-vacancy="vacancy3"
+        role="tab"
+        aria-selected="false">
+
+        <span class="vacancy-tab-name">
+          ML Data Scientist
+        </span>
+
+        <span class="vacancy-tab-description">
+          Собственная ML-модель
+        </span>
+
+      </button>
+
+
+      <button
+        class="vacancy-tab vacancy-tab-4"
+        data-vacancy="vacancy4"
+        role="tab"
+        aria-selected="false">
+
+        <span class="vacancy-tab-name">
+          AI Product Manager / AI Product Owner
+        </span>
+
+        <span class="vacancy-tab-description">
+          Развитие ИИ-продукта
+        </span>
+
+      </button>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         AI/LLM ENGINEER
+         ========================= -->
+
+    <section
+      class="vacancy-panel vacancy-panel-1 active"
+      id="vacancy1">
+
+
+      <div class="vacancy-panel-header">
+
+        <div class="vacancy-panel-heading">
+
+          <span class="vacancy-panel-title">
+            AI/LLM Engineer
+          </span>
+
+        </div>
+
+
+        <button
+          class="copy-vacancy"
+          type="button">
+          Скопировать
+        </button>
+
+      </div>
+
+
+      <div class="vacancy-content">
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Обязанности
+          </h3>
+
+          <p>
+            Разработка и внедрение AI-ассистентов и AI-агентов
+            на базе LLM, построение RAG-решений на корпоративных
+            данных. Интеграция AI-сервисов с внутренними системами
+            по API. Настройка агентных сценариев и tool calling,
+            тестирование качества и запуск решений в эксплуатацию.
+          </p>
+
+        </div>
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Требования
+          </h3>
+
+          <p>
+            Python, опыт работы с LLM API, RAG,
+            векторными базами данных, LangChain,
+            LangGraph, LlamaIndex или аналогичными фреймворками.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <textarea class="copy-source" hidden>Название вакансии: AI/LLM Engineer
+
+Обязанности: разработка и внедрение AI-ассистентов и AI-агентов на базе LLM, построение RAG-решений на корпоративных данных. Интеграция AI-сервисов с внутренними системами по API. Настройка агентных сценариев и tool calling, тестирование качества и запуск решений в эксплуатацию.
+
+Требования: Python, опыт работы с LLM API, RAG, векторными базами данных, LangChain, LangGraph, LlamaIndex или аналогичными фреймворками.</textarea>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         DATA SCIENTIST LLM/NLP
+         ========================= -->
+
+    <section
+      class="vacancy-panel vacancy-panel-2"
+      id="vacancy2">
+
+
+      <div class="vacancy-panel-header">
+
+        <div class="vacancy-panel-heading">
+
+          <span class="vacancy-panel-title">
+            Data Scientist LLM/NLP
+          </span>
+
+        </div>
+
+
+        <button
+          class="copy-vacancy"
+          type="button">
+          Скопировать
+        </button>
+
+      </div>
+
+
+      <div class="vacancy-content">
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Обязанности
+          </h3>
+
+          <p>
+            Дообучение и настройка ML/LLM-моделей,
+            подготовка и проведение экспериментов.
+          </p>
+
+        </div>
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Требования
+          </h3>
+
+          <p>
+            Python, ML и статистика, PyTorch или TensorFlow,
+            Hugging Face, NLP/LLM.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <textarea class="copy-source" hidden>Название вакансии: Data Scientist LLM/NLP
+
+Обязанности: дообучение и настройка ML/LLM-моделей, подготовка и проведение экспериментов.
+
+Требования: Python, ML и статистика, PyTorch или TensorFlow, Hugging Face, NLP/LLM.</textarea>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ML DATA SCIENTIST
+         ========================= -->
+
+    <section
+      class="vacancy-panel vacancy-panel-3"
+      id="vacancy3">
+
+
+      <div class="vacancy-panel-header">
+
+        <div class="vacancy-panel-heading">
+
+          <span class="vacancy-panel-title">
+            ML Data Scientist
+          </span>
+
+        </div>
+
+
+        <button
+          class="copy-vacancy"
+          type="button">
+          Скопировать
+        </button>
+
+      </div>
+
+
+      <div class="vacancy-content">
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Обязанности
+          </h3>
+
+          <p>
+            Разработка и тестирование ML-моделей,
+            подготовка признаков, проведение экспериментов,
+            выбор метрик качества и участие во внедрении модели.
+          </p>
+
+        </div>
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Требования
+          </h3>
+
+          <p>
+            Python, SQL, статистика, машинное обучение,
+            scikit-learn, CatBoost, XGBoost или аналогичный стек.
+            Дополнительно — опыт решения задач, аналогичных вашей.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <textarea class="copy-source" hidden>Название вакансии: ML Data Scientist
+
+Обязанности: разработка и тестирование ML-моделей, подготовка признаков, проведение экспериментов, выбор метрик качества и участие во внедрении модели.
+
+Требования: Python, SQL, статистика, машинное обучение, scikit-learn, CatBoost, XGBoost или аналогичный стек. Дополнительно — опыт решения задач, аналогичных вашей.</textarea>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         AI PRODUCT MANAGER
+         ========================= -->
+
+    <section
+      class="vacancy-panel vacancy-panel-4"
+      id="vacancy4">
+
+
+      <div class="vacancy-panel-header">
+
+        <div class="vacancy-panel-heading">
+
+          <span class="vacancy-panel-title">
+            AI Product Manager / AI Product Owner
+          </span>
+
+        </div>
+
+
+        <button
+          class="copy-vacancy"
+          type="button">
+          Скопировать
+        </button>
+
+      </div>
+
+
+      <div class="vacancy-content">
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Обязанности
+          </h3>
+
+          <p>
+            Развитие ИИ-продукта, сбор и приоритизация требований
+            пользователей. Постановка задач аналитикам
+            и разработчикам. Управление продуктовыми метриками
+            и контроль результатов внедрения.
+          </p>
+
+        </div>
+
+
+        <div class="vacancy-section">
+
+          <h3 class="vacancy-section-title">
+            Требования
+          </h3>
+
+          <p>
+            Опыт управления цифровыми продуктами,
+            опыт запуска AI/ML/LLM-решений.
+            Опыт работы с командами разработки и Data Science,
+            понимание возможностей и ограничений LLM.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <textarea class="copy-source" hidden>Название вакансии: AI Product Manager / AI Product Owner
+
+Обязанности: развитие ИИ-продукта, сбор и приоритизация требований пользователей. Постановка задач аналитикам и разработчикам. Управление продуктовыми метриками и контроль результатов внедрения.
+
+Требования: опыт управления цифровыми продуктами, опыт запуска AI/ML/LLM-решений. Опыт работы с командами разработки и Data Science, понимание возможностей и ограничений LLM.</textarea>
+
+
+    </section>
+
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+(function () {
+
+
+  const widget =
+    document.getElementById('aiVacancyWidget');
+
+
+  if (!widget) {
+    return;
+  }
+
+
+
+  /* =========================
+     ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
+     ========================= */
+
+
+  const tabs =
+    widget.querySelectorAll('.vacancy-tab');
+
+
+  const panels =
+    widget.querySelectorAll('.vacancy-panel');
+
+
+
+  tabs.forEach(function(tab) {
+
+
+    tab.addEventListener('click', function() {
+
+
+      const vacancyId =
+        tab.dataset.vacancy;
+
+
+
+      tabs.forEach(function(item) {
+
+        item.classList.remove('active');
+
+        item.setAttribute(
+          'aria-selected',
+          'false'
+        );
+
+      });
+
+
+
+      panels.forEach(function(panel) {
+
+        panel.classList.remove('active');
+
+      });
+
+
+
+      tab.classList.add('active');
+
+
+      tab.setAttribute(
+        'aria-selected',
+        'true'
+      );
+
+
+
+      const target =
+        widget.querySelector(
+          '#' + vacancyId
+        );
+
+
+      if (target) {
+
+        target.classList.add('active');
+
+      }
+
+
+    });
+
+
+  });
+
+
+
+  /* =========================
+     КОПИРОВАНИЕ
+     ========================= */
+
+
+  const copyButtons =
+    widget.querySelectorAll('.copy-vacancy');
+
+
+
+  copyButtons.forEach(function(button) {
+
+
+    button.addEventListener(
+      'click',
+      async function() {
+
+
+        const panel =
+          button.closest('.vacancy-panel');
+
+
+        const source =
+          panel.querySelector('.copy-source');
+
+
+        if (!source) {
+          return;
+        }
+
+
+        const text =
+          source.value.trim();
+
+
+
+        try {
+
+
+          await navigator.clipboard.writeText(text);
+
+
+          showCopied(button);
+
+
+        }
+
+
+        catch (error) {
+
+
+          const temporary =
+            document.createElement('textarea');
+
+
+          temporary.value = text;
+
+
+          temporary.style.position =
+            'fixed';
+
+
+          temporary.style.opacity =
+            '0';
+
+
+          document.body.appendChild(
+            temporary
+          );
+
+
+          temporary.focus();
+
+          temporary.select();
+
+
+          document.execCommand('copy');
+
+
+          temporary.remove();
+
+
+          showCopied(button);
+
+
+        }
+
+
+      }
+    );
+
+
+  });
+
+
+
+  /* =========================
+     НАДПИСЬ "СКОПИРОВАНО"
+     ========================= */
+
+
+  function showCopied(button) {
+
+
+    button.textContent =
+      'Скопировано ✓';
+
+
+    button.classList.add('copied');
+
+
+    setTimeout(function() {
+
+
+      button.textContent =
+        'Скопировать';
+
+
+      button.classList.remove('copied');
+
+
+    }, 1600);
+
+
+  }
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
