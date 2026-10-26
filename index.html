@@ -34,7 +34,7 @@
     --orange: #d96f00;
 
     width: 757px;
-    height: 370px; /* Уменьшено с 490px */
+    height: 370px; 
 
     margin: 0 auto;
 
@@ -54,31 +54,36 @@
 
 
   /* =========================
-     ШАПКА
+     ШАПКА (Стиль как в референсе)
      ========================= */
 
   .vacancy-header {
-    height: 67px;
-    padding: 9px 14px 7px;
+    /* Убрали жесткую высоту, чтобы шапка подстраивалась под новый крупный текст */
+    padding: 12px 14px 10px; 
   }
 
   .vacancy-title {
-    margin: 0;
+    margin: 0 0 5px;
 
     color: var(--navy);
 
-    font-size: 25px;
-    line-height: 1.05;
-    font-weight: 800;
+    /* Шрифт с засечками как в референсе */
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 700;
   }
 
   .vacancy-subtitle {
-    margin-top: 5px;
+    margin: 0;
+    max-width: 650px;
 
-    color: #356f9d;
+    color: #40536d;
 
-    font-size: 12.5px;
-    line-height: 1.15;
+    /* Шрифт с засечками как в референсе */
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    line-height: 1.4;
   }
 
 
@@ -94,7 +99,8 @@
 
     gap: 8px;
 
-    height: 303px; /* Уменьшено с 423px */
+    /* Высота подогнана так, чтобы общая высота осталась 370px */
+    height: 299px; 
 
     padding: 0 8px 8px;
   }
@@ -358,7 +364,6 @@
 
     padding: 8px 10px;
     
-    /* flex: 0 0 auto; не дает блокам растягиваться на всю высоту */
     flex: 0 0 auto; 
 
     background: rgba(255,255,255,.48);
